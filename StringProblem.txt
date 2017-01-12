@@ -1,0 +1,47 @@
+public class stringProblem {
+    public static void main(String...args){ 
+           String originalString="Hi Mr.John. How are you doing?."; //String to be reversed
+           char ChrToBeDeleted = 'o';
+           
+           System.out.println("Original String: "+originalString);
+           
+           String FinalStr=RemoveCharFromString(originalString,ChrToBeDeleted);
+           System.out.print("\nString after removing the char: "+FinalStr);
+
+           FinalStr=RemoveCharFromStringOption2(originalString,ChrToBeDeleted);
+           System.out.print("\nString after removing the char: "+FinalStr);
+    }
+    /*
+    This method is to loop into the given string and compair with the char to be removed and replace it.
+    */
+
+    private static String RemoveCharFromStringOption2(String originalString, char chrToBeDeleted) {
+		// TODO Auto-generated method stub
+    		return originalString.replace(Character.toString(chrToBeDeleted),"");
+	}
+
+	public static String RemoveCharFromString(String str,char ChrToBeDeleted) {
+    	//String CStrToBeDeleted=Character.toString(ChrToBeDeleted);
+//for loop to iterate till the length of string.
+    	int pos = 0;
+    	String Newstr = null;
+    	String RestStr = null;
+    	for (int iniLoop=0;iniLoop<=str.length()-1;iniLoop++)
+    	{
+    		char CtoS=str.charAt(iniLoop);
+    		if(CtoS==ChrToBeDeleted)
+    		{
+    			Newstr=str.substring(0, iniLoop);
+    			RestStr=str.substring(iniLoop+1, str.length());
+    			str=Newstr+RestStr;
+    			pos=iniLoop;
+    			iniLoop+=1;
+    		}
+    		if(iniLoop-1==str.length()-1)
+    		{
+    			str=Newstr+RestStr+str.substring(pos, str.length()-1);
+    		}
+    	}
+    	return str;
+    }
+}
